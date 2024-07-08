@@ -50,7 +50,7 @@ def speak(text: str):
 
 def get_weather():
     """Fetches current weather information."""
-    city = "Varanasi"  # Change this to your city
+    city = "Lucknow"  # Change this to your city
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={weather_api_key}&units=metric"
     response = requests.get(url)
     if response.status_code == 200:
@@ -76,9 +76,9 @@ def process_command(command: str):
     elif "open youtube" in command:
         webbrowser.open("https://youtube.com")
     elif "favourite song" in command:
-        webbrowser.open("https://www.youtube.com/watch?v=2RubMkkAltE")
-    elif "college website" in command:
-        webbrowser.open("https://sms.iul.ac.in/Student/index.aspx")
+        webbrowser.open("https://www.youtube.com/watch?v=5Eqb_-j3FDA")
+    # elif "college website" in command:
+    #     webbrowser.open("")
     elif "time" in command:
         now = datetime.datetime.now().strftime("%H:%M")
         speak(f"The current time is {now}")
@@ -92,11 +92,11 @@ def process_command(command: str):
         query = command.replace("wikipedia", "").strip()
         summary = wikipedia.summary(query, sentences=2)
         speak(summary)
-    # elif "take note" in command:
-    #     note = command.replace("take note", "").strip()
-    #     with open("notes.txt", "a") as file:
-    #         file.write(note + "\n")
-    #     speak("Note taken.")
+    elif "take note" in command:
+        note = command.replace("take note", "").strip()
+        with open("notes.txt", "a") as file:
+            file.write(note + "\n")
+        speak("Note taken.")
     elif "shutdown" in command:
         speak("Shutting down the system.")
         os.system("shutdown now")
